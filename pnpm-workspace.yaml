@@ -1,0 +1,10 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+linkWorkspacePackages: true
+sharedWorkspaceLockfile: true
+saveExact: true
+sideEffectsCache:
+  read: true
+  write: true
