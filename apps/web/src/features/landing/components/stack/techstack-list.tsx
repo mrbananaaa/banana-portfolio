@@ -37,7 +37,7 @@ export const TechStackList = () => {
 			{TECH_STACK.map(({ title, subtitle, category }) => (
 				<div
 					key={title}
-					className="carousel-item h-full w-full rounded-xl border-[0.1px] border-foreground/20 bg-transparent p-4 md:w-1/2"
+					className="carousel-item h-full w-[90%] rounded-xl border-[0.1px] border-foreground/20 bg-transparent p-4 md:w-1/2"
 				>
 					<div className="flex h-full flex-col justify-between">
 						<div className="flex flex-col gap-y-1 md:max-w-3/4">
