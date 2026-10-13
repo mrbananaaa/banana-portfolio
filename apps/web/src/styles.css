@@ -207,6 +207,19 @@ h6 {
 		@apply text-muted-foreground text-sm md:text-base tracking-[-0.06em] selection:bg-primary selection:text-foreground;
 	}
 }
+
+@layer utilities {
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+}
+
 /*
    ---break--- */
 .dark {

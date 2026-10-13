@@ -15,7 +15,7 @@ const TechIconList = ({ category }: { category: TechCategory }) => {
 						borderWidth: "0.1px",
 						borderColor: `color-mix(in oklab, ${strokeColor ? strokeColor : ""} 30%, transparent)`,
 					}}
-					className="flex size-12 bg-muted cursor-pointer items-center justify-center rounded-lg shadow-md shadow-foreground/15"
+					className="flex size-12 cursor-pointer items-center justify-center rounded-lg bg-muted shadow-md shadow-foreground/15"
 				>
 					<Icon
 						color={color}
@@ -51,7 +51,7 @@ export const TechStackList = () => {
 						</div>
 
 						<div className="flex h-[65%] overflow-hidden">
-							<div className="grid h-full w-full grid-cols-[repeat(auto-fill,minmax(48px,1fr))] content-start items-start gap-2 overflow-y-scroll p-1 md:max-w-md">
+							<div className="no-scrollbar grid h-full w-full grid-cols-[repeat(auto-fill,minmax(48px,1fr))] content-start items-start gap-2 overflow-y-scroll p-1 md:max-w-md">
 								<TechIconList category={category} />
 							</div>
 						</div>
