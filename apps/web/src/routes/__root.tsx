@@ -1,6 +1,16 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+	HeadContent,
+	Outlet,
+	Scripts,
+	createRootRoute,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+
+import { AppProvider } from "@/components/layouts/providers";
+
+import "@fontsource-variable/dm-sans";
+import "@fontsource-variable/inter";
 
 import appCss from "../styles.css?url";
 
@@ -15,7 +25,50 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "TanStack Start Starter",
+				title: "Devyan Astagiri — Full-Stack Engineer | mrbananaaa",
+			},
+			{
+				name: "description",
+				content:
+					"Portfolio of Devyan Dewandaru Astagiri, also known as mrbananaaa, a self-taught full-stack engineer focused on scalable systems, APIs, and modern web applications",
+			},
+
+			// Open Graph
+			{
+				property: "og:title",
+				content: "Devyan Dewandaru Astagiri — Full-Stack Engineer",
+			},
+			{
+				property: "og:description",
+				content:
+					"Self-taught full-stack engineer focused on APIs, real-time systems, and scalable web applications.",
+			},
+			{
+				property: "og:type",
+				content: "website",
+			},
+			{
+				property: "og:image",
+				content: "https://yourdomain.com/og-image.png",
+			},
+
+			// X / Twitter
+			{
+				name: "twitter:card",
+				content: "summary_large_image",
+			},
+			{
+				name: "twitter:title",
+				content: "Devyan Dewandaru Astagiri — Full-Stack Engineer",
+			},
+			{
+				name: "twitter:description",
+				content:
+					"Self-taught full-stack engineer focused on APIs, real-time systems, and scalable web applications.",
+			},
+			{
+				name: "twitter:image",
+				content: "https://yourdomain.com/og-image.png",
 			},
 		],
 		links: [
@@ -23,19 +76,38 @@ export const Route = createRootRoute({
 				rel: "stylesheet",
 				href: appCss,
 			},
+			{
+				rel: "canonical",
+				href: "https://mrbananaaa.vercel.app/",
+			},
+			{
+				rel: "icon",
+				type: "image/svg+xml",
+				href: "/logo-dark.svg",
+			},
 		],
 	}),
 	shellComponent: RootDocument,
+	component: RootComponent,
 });
+
+function RootComponent() {
+	return (
+		<AppProvider>
+			<Outlet />
+		</AppProvider>
+	);
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="en" className="antialiased">
 			<head>
 				<HeadContent />
 			</head>
-			<body>
+			<body className="bg-background text-foreground">
 				{children}
+
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1536 1536" role="img" aria-labelledby="title desc">
+<title id="title">Mr Banana avatar — editable vector illustration</title><desc id="desc">A friendly stylized young man waving, wearing a black T-shirt with a yellow circular mascot logo, dark trousers and cream sneakers, on a yellow circular backdrop.</desc>
+<defs>
+ <linearGradient id="backdrop" x1=".15" y1=".1" x2=".9" y2=".95"><stop stop-color="#FFD52A"/><stop offset=".52" stop-color="#FFB900"/><stop offset="1" stop-color="#FFCE00"/></linearGradient>
+ <radialGradient id="backGlow" cx="48%" cy="39%" r="67%"><stop stop-color="#FFE04A" stop-opacity=".7"/><stop offset="1" stop-color="#FFB600" stop-opacity="0"/></radialGradient>
+ <linearGradient id="skin" x1=".12" y1=".15" x2=".85" y2=".9"><stop stop-color="#F7B77C"/><stop offset=".42" stop-color="#E99A5E"/><stop offset=".75" stop-color="#C96D3D"/><stop offset="1" stop-color="#A94E2C"/></linearGradient>
+ <linearGradient id="skinLight" x1="0" y1="0" x2="1" y2=".8"><stop stop-color="#FFD09A"/><stop offset=".55" stop-color="#F4AC72"/><stop offset="1" stop-color="#D67A49"/></linearGradient>
+ <linearGradient id="hair" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#39302D"/><stop offset=".42" stop-color="#171718"/><stop offset=".75" stop-color="#282323"/><stop offset="1" stop-color="#100F10"/></linearGradient>
+ <linearGradient id="shirt" x1=".05" y1="0" x2=".9" y2="1"><stop stop-color="#292828"/><stop offset=".5" stop-color="#191919"/><stop offset="1" stop-color="#303030"/></linearGradient>
+ <linearGradient id="pants" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#182234"/><stop offset=".28" stop-color="#253149"/><stop offset=".56" stop-color="#1C263B"/><stop offset=".8" stop-color="#30394D"/><stop offset="1" stop-color="#182235"/></linearGradient>
+ <linearGradient id="shoe" x1=".15" y1="0" x2=".85" y2="1"><stop stop-color="#FFF9E9"/><stop offset=".7" stop-color="#E8DDC8"/><stop offset="1" stop-color="#CFC2AE"/></linearGradient>
+ <linearGradient id="sole" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#F5ECDD"/><stop offset="1" stop-color="#C6B9A6"/></linearGradient>
+ <radialGradient id="faceShade" cx="50%" cy="38%" r="65%"><stop offset=".45" stop-color="#FFD09A" stop-opacity="0"/><stop offset="1" stop-color="#9D452A" stop-opacity=".42"/></radialGradient>
+ <linearGradient id="palm" x1="0" y1="0" x2="1" y2=".7"><stop stop-color="#F7B87F"/><stop offset=".55" stop-color="#E89A62"/><stop offset="1" stop-color="#C96E43"/></linearGradient>
+ <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="11"/></filter>
+</defs>
+<!-- Background -->
+<g id="background">
+ <path d="M20 796C36 464 288 145 594 66C865-4 1138 104 1325 310C1470 470 1545 688 1515 862C1477 1087 1251 1211 1032 1271C770 1342 437 1300 228 1118C83 991 8 884 20 796Z" fill="url(#backdrop)"/>
+ <path d="M20 796C36 464 288 145 594 66C865-4 1138 104 1325 310C1470 470 1545 688 1515 862C1477 1087 1251 1211 1032 1271C770 1342 437 1300 228 1118C83 991 8 884 20 796Z" fill="url(#backGlow)"/>
+</g>
+<!-- soft ground shadow -->
+<ellipse cx="770" cy="1193" rx="250" ry="22" fill="#B76B00" opacity=".17" filter="url(#softShadow)"/>
+<!-- Back arm raised, behind torso -->
+<g id="raised-arm">
+ <path d="M846 397C875 380 909 397 929 426C947 453 967 478 983 504C1004 535 1009 560 995 585C984 605 958 619 937 608C918 599 900 576 884 553L841 491C820 460 819 418 846 397Z" fill="url(#skin)"/>
+ <path d="M868 409C892 418 911 449 929 476L970 539C979 554 979 570 968 585C954 600 938 590 922 568L871 493C851 464 842 433 868 409Z" fill="#F3AB70" opacity=".36"/>
+ <!-- raised palm and fingers -->
+ <path d="M950 512C963 490 972 464 981 435L991 396C994 384 1002 379 1009 383C1016 386 1017 393 1015 403L1009 442L1023 386C1026 374 1034 370 1041 375C1048 379 1048 386 1045 397L1035 443L1054 394C1058 383 1066 380 1073 385C1080 390 1078 398 1074 408L1057 452L1080 418C1086 409 1094 409 1099 415C1105 421 1101 430 1096 439L1074 483C1066 502 1057 520 1046 538C1034 559 1009 574 985 564C961 555 943 535 950 512Z" fill="url(#palm)"/>
+ <path d="M1002 395L995 438M1035 390L1024 436M1067 401L1048 444M1090 426L1068 464" fill="none" stroke="#B85D37" stroke-width="4" stroke-linecap="round" opacity=".42"/>
+ <path d="M972 513C992 521 1018 524 1040 510" fill="none" stroke="#B95D38" stroke-width="5" stroke-linecap="round" opacity=".32"/>
+</g>
+<!-- neck -->
+<path id="neck" d="M704 295L807 292L811 374C809 402 785 419 756 418C728 417 704 400 703 374Z" fill="url(#skin)"/>
+<path d="M704 329C729 355 781 361 808 330L808 377C792 405 724 406 704 375Z" fill="#B65B37" opacity=".35"/>
+<!-- left arm -->
+<g id="left-arm">
+ <path d="M565 410C537 422 518 450 509 488L477 628C468 671 464 717 463 758C462 785 472 810 489 815C506 820 518 804 517 784L522 714L548 593L593 485C610 451 598 423 565 410Z" fill="url(#skin)"/>
+ <path d="M555 446C540 475 529 523 518 568L489 704C485 729 484 759 489 780C493 795 501 798 507 786L520 709L551 585L583 493C594 466 580 444 555 446Z" fill="#F7B87E" opacity=".45"/>
+ <!-- relaxed hand -->
+ <path d="M470 738C458 753 458 773 467 793L481 817C489 831 504 835 512 824C519 814 512 803 506 791L503 768C501 751 485 733 470 738Z" fill="url(#skinLight)"/>
+ <path d="M471 777C476 793 484 806 495 814" fill="none" stroke="#B95E38" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+</g>
+<!-- torso and shirt sleeves -->
+<g id="shirt">
+ <path d="M699 365C670 366 624 378 591 393C558 407 545 432 537 469L519 526C543 542 571 548 596 540L618 481L610 636L608 842C648 857 855 858 901 839L887 618L879 482L910 537C936 532 957 516 971 495L932 427C918 403 891 390 855 379C823 369 788 365 766 366Z" fill="url(#shirt)"/>
+ <path d="M699 369C668 379 632 389 610 411C592 432 586 474 574 511L556 531C543 529 533 524 523 517L541 464C552 427 565 408 596 393C626 379 666 369 699 369Z" fill="#3A3939" opacity=".55"/>
+ <path d="M855 382C890 393 910 408 927 437L959 492C949 507 936 518 920 523L900 485C885 455 874 424 855 382Z" fill="#101010" opacity=".42"/>
+ <path d="M610 635C676 648 817 650 887 635L901 839C844 855 660 856 608 842Z" fill="#171717" opacity=".28"/>
+ <path d="M615 402C650 388 685 381 711 381" fill="none" stroke="#4A4847" stroke-width="6" stroke-linecap="round" opacity=".3"/>
+ <!-- logo badge -->
+ <g id="shirt-logo">
+  <circle cx="765" cy="593" r="83" fill="#FFCE20"/>
+  <circle cx="765" cy="593" r="83" fill="none" stroke="#F5B900" stroke-width="2"/>
+  <g fill="#050505" stroke="#FFFDF3" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+   <path d="M753 548C744 544 748 534 757 531C760 518 779 516 786 529C799 530 806 539 799 549L790 557L758 560Z"/>
+   <path d="M754 550C765 555 783 548 793 541" fill="none" stroke-width="4"/>
+   <path d="M759 563C771 567 785 561 791 555" fill="none" stroke-width="3"/>
+   <path d="M760 574C749 585 735 590 724 602C713 614 704 624 692 627C682 630 686 639 703 642C726 646 751 637 769 621C781 611 788 600 786 589C784 578 773 570 760 574Z"/>
+   <path d="M768 579C776 575 783 578 787 585L794 595L789 607C785 614 779 616 774 610L767 601Z"/>
+   <path d="M770 587L779 583L786 590L779 595L787 601L779 607L771 600L764 605L760 598L766 592Z" fill="#050505" stroke-width="2.5"/>
+  </g>
+ </g>
+</g>
+<!-- trousers -->
+<g id="trousers">
+ <path d="M611 832C656 845 850 846 898 831L892 1017L878 1091C862 1107 826 1108 803 1098L789 898L777 895L766 1099C742 1112 684 1111 657 1098L644 1012Z" fill="url(#pants)"/>
+ <path d="M631 851L650 1005L663 1082C672 1090 686 1093 701 1092L690 894C685 878 667 865 631 851Z" fill="#344057" opacity=".48"/>
+ <path d="M858 850C879 864 881 888 880 915L868 1082C856 1091 839 1093 823 1089L833 901C835 879 841 861 858 850Z" fill="#111B2D" opacity=".52"/>
+ <path d="M766 854L779 895L789 1098" fill="none" stroke="#121C2C" stroke-width="7" opacity=".7"/>
+ <path d="M652 1081C677 1090 709 1091 731 1086L731 1101C706 1110 674 1110 657 1101Z" fill="#141D2D"/>
+ <path d="M802 1090C824 1098 857 1098 878 1086L878 1100C857 1111 824 1110 804 1102Z" fill="#141D2D"/>
+ <path d="M656 1093C678 1100 707 1100 729 1093M806 1094C827 1102 855 1100 875 1091" fill="none" stroke="#465066" stroke-width="3" opacity=".8"/>
+</g>
+<!-- shoes -->
+<g id="shoes">
+ <path d="M658 1096C675 1105 701 1107 721 1098L735 1124C747 1144 753 1161 745 1174C735 1188 691 1187 663 1181C642 1176 627 1167 627 1153C628 1136 642 1110 658 1096Z" fill="url(#shoe)"/>
+ <path d="M806 1097C827 1106 853 1106 875 1094C888 1115 904 1141 903 1158C902 1174 886 1182 858 1183C827 1184 795 1179 786 1165C779 1153 791 1120 806 1097Z" fill="url(#shoe)"/>
+ <path d="M629 1151C659 1165 706 1171 747 1160C751 1170 744 1180 731 1184C700 1191 654 1184 635 1174C628 1168 626 1159 629 1151Z" fill="url(#sole)"/>
+ <path d="M788 1157C821 1170 870 1171 902 1154C907 1167 897 1178 880 1182C850 1189 810 1183 794 1174C788 1170 786 1163 788 1157Z" fill="url(#sole)"/>
+ <g fill="none" stroke="#B8AD9D" stroke-width="3.5" stroke-linecap="round">
+  <path d="M661 1127L696 1135M655 1138L691 1146M650 1149L686 1157M818 1128L852 1135M812 1139L848 1147M807 1150L843 1158"/>
+ </g>
+ <path d="M669 1115C681 1118 696 1119 709 1115M817 1116C834 1120 851 1119 865 1113" fill="none" stroke="#FFFDF5" stroke-width="4" opacity=".8"/>
+</g>
+<!-- face and ears -->
+<g id="head">
+ <path d="M660 211C661 159 700 132 754 132C813 132 852 170 852 226L843 279C835 322 804 354 762 357C719 357 685 328 672 289Z" fill="url(#skinLight)"/>
+ <ellipse cx="661" cy="257" rx="20" ry="27" fill="url(#skin)"/>
+ <ellipse cx="847" cy="255" rx="19" ry="26" fill="url(#skin)"/>
+ <path d="M673 216C690 172 722 151 759 151C803 151 833 183 838 223L832 282C819 323 795 343 761 345C727 344 696 319 683 283Z" fill="url(#faceShade)"/>
+ <!-- cheeks -->
+ <ellipse cx="693" cy="274" rx="23" ry="13" fill="#E9805A" opacity=".18"/>
+ <ellipse cx="819" cy="273" rx="22" ry="13" fill="#E9805A" opacity=".16"/>
+ <!-- eyebrows -->
+ <path d="M694 218C705 210 719 209 731 214" fill="none" stroke="#30201B" stroke-width="8" stroke-linecap="round"/>
+ <path d="M775 214C788 208 802 211 812 219" fill="none" stroke="#30201B" stroke-width="8" stroke-linecap="round"/>
+ <!-- eyes -->
+ <ellipse cx="706" cy="246" rx="8" ry="11" fill="#38231D"/><ellipse cx="796" cy="246" rx="8" ry="11" fill="#38231D"/>
+ <ellipse cx="704" cy="243" rx="2.5" ry="3" fill="#FFF0D7" opacity=".75"/><ellipse cx="794" cy="243" rx="2.5" ry="3" fill="#FFF0D7" opacity=".75"/>
+ <!-- nose and smile -->
+ <path d="M747 250C743 260 741 267 748 270C752 272 758 271 762 268" fill="none" stroke="#CE794C" stroke-width="4" stroke-linecap="round" opacity=".48"/>
+ <path d="M720 294C739 307 772 308 791 293C787 310 772 319 754 318C738 317 725 308 720 294Z" fill="#642D25"/>
+ <path d="M725 296C743 301 770 301 786 296C779 306 738 309 725 296Z" fill="#FFF1DD"/>
+ <path d="M728 313C744 320 766 320 780 312" fill="none" stroke="#C46C48" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+ <!-- hair silhouette and distinct locks -->
+ <path d="M654 253C639 223 644 184 663 157C680 132 709 115 737 119C752 119 761 126 770 137C787 116 814 115 835 130C864 151 881 185 872 225C869 241 861 253 850 264L843 223C833 200 817 178 798 163C785 153 775 155 763 167C747 154 731 154 716 166C696 181 681 208 672 239L670 263Z" fill="url(#hair)"/>
+ <path d="M657 221C653 186 673 149 704 132C721 122 744 126 756 144C739 145 723 153 711 168C691 190 679 220 673 247L666 257Z" fill="#3B3330"/>
+ <path d="M762 145C780 121 804 123 824 141C846 161 857 194 853 224L845 250C841 217 826 185 803 164C789 151 775 148 762 161Z" fill="#211F20"/>
+ <path d="M663 210C672 176 697 146 727 139C739 136 749 141 757 149C736 154 717 171 704 192C691 212 680 234 674 249C666 242 663 226 663 210Z" fill="#282525"/>
+ <path d="M770 145C787 133 806 140 822 159C838 180 846 207 846 228C835 204 820 183 802 167C791 158 780 153 770 157Z" fill="#34302F"/>
+ <path d="M698 154C681 170 670 193 668 215M715 147C694 170 683 194 679 221M805 145C827 165 839 190 841 213" fill="none" stroke="#514744" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+</g>
+<!-- arm overlap edges to keep silhouette crisp -->
+<path d="M930 425C946 450 965 479 982 505" fill="none" stroke="#A95131" stroke-width="4" opacity=".28"/>
+</svg>

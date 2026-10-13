@@ -1,0 +1,92 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab",
+    "trailingNewline": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "style": {
+        "useImportType": {
+          "level": "on",
+          "options": {
+            "style": "inlineType"
+          }
+        }
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    },
+    "assist": {
+      "enabled": true
+    }
+  },
+  "css": {
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true
+    },
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "sortBareImports": true,
+            "groups": [
+              {
+                "kind": "!bare",
+                "source": [
+                  ":NODE:",
+                  ":BUN:"
+                ]
+              },
+              ":BLANK_LINE:",
+              {
+                "kind": "!bare",
+                "source": ":PACKAGE:"
+              },
+              ":BLANK_LINE:",
+              {
+                "kind": "!bare",
+                "source": ":ALIAS:"
+              },
+              ":BLANK_LINE:",
+              {
+                "kind": "!bare",
+                "source": [
+                  ":PATH:",
+                  "!**/*.css*",
+                  "!**/*.scss*"
+                ]
+              },
+              ":BLANK_LINE:",
+              {
+                "kind": "bare"
+              },
+              ":BLANK_LINE:",
+              [
+                ":STYLE:",
+                "**/*.css*",
+                "**/*.scss*"
+              ]
+            ],
+            "identifierOrder": "lexicographic"
+          }
+        }
+      }
+    }
+  }
+}
