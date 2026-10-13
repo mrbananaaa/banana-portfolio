@@ -6,6 +6,7 @@ import {
 	createRootRoute,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { Analytics } from "@vercel/analytics/react";
 
 import { AppProvider } from "@/components/layouts/providers";
 
@@ -119,6 +120,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 						},
 					]}
 				/>
+
+				<Analytics />
 				<Scripts />
 			</body>
 		</html>
