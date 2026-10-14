@@ -32,7 +32,7 @@ export const AboutSection = () => {
 			});
 
 			tl.from(titleSplit.words, {
-				opacity: 0.15,
+				opacity: 0.3,
 				stagger: 0.1,
 			})
 				.from(
