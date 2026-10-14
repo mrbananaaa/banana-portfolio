@@ -16,7 +16,9 @@ export const MyAvatar = ({ className, ...props }: MyAvatarProps) => {
 			gsap.from("#img-reveal", {
 				autoAlpha: 0,
 				duration: 0.6,
-				ease: "power4.inOut",
+				width: "95%",
+				height: "95%",
+				ease: "bounce.inOut",
 				scrollTrigger: {
 					trigger: containerRef.current,
 					toggleActions: "play reverse restart reverse",
