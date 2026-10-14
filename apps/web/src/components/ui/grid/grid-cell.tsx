@@ -138,7 +138,12 @@ export const GridCell = ({
 				/* <div className="mx-auto w-full max-w-mgw px-4 md:px-8">{children}</div> */
 				/* <div className={cn("mx-auto w-full overflow-hidden p-4", className)}> */
 				// TODO: CREATE A FULL BLEED AND FULL BUT STILL RESPECT GRID
-				<div className={cn("p-4 w-full relative overflow-hidden", className)}>
+				<div
+					className={cn(
+						"p-4 w-full relative overflow-hidden 2xl:max-w-[70svw] 2xl:mx-auto",
+						className,
+					)}
+				>
 					{children}
 				</div>
 			) : (

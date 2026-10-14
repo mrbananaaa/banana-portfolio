@@ -49,7 +49,7 @@ export const TechStackSection = () => {
 							</Carousel>
 						</div>
 
-						<span className="text-center block mt-2 box-content text-xs leading-[80%] text-muted-foreground select-none tracking-[-0.06em]">
+						<span className="mt-2 box-content block text-center text-xs leading-[80%] tracking-[-0.06em] text-muted-foreground select-none">
 							<span className="bg-muted">
 								Hint: hover over the icon to show the name of the tech
 							</span>

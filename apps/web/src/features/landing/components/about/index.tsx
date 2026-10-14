@@ -63,7 +63,7 @@ export const AboutSection = () => {
 
 	return (
 		<div ref={containerRef} className="flex h-full w-full items-center">
-			<div className="flex w-full flex-col items-center gap-y-8 md:flex-row md:gap-x-10 md:gap-y-0 lg:justify-between xl:justify-center xl:gap-x-14">
+			<div className="flex w-full flex-col items-center gap-y-8 md:flex-row md:gap-x-10 md:gap-y-0 lg:justify-between">
 				<div className="flex-1 md:max-w-lg">
 					<MyAvatar className="h-full w-full" />
 				</div>
