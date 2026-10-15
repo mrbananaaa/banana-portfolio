@@ -36,7 +36,7 @@ export const ContactSection = () => {
 						<a href={CONTACT_LIST.get("Email")} target="_blank" rel="noopener">
 							<button
 								type="button"
-								className="transition-color block h-14 w-38 cursor-pointer rounded-lg bg-primary text-center text-sm font-medium tracking-[-0.06em] text-white shadow-md duration-700 hover:bg-[#ffc000]"
+								className="block h-14 w-38 cursor-pointer rounded-lg bg-primary text-center text-sm font-medium tracking-[-0.06em] text-white shadow-md transition-colors duration-700 hover:bg-[#ffc000]"
 							>
 								Email Me
 							</button>
@@ -44,7 +44,7 @@ export const ContactSection = () => {
 
 						<button
 							type="button"
-							className="transition-color block h-14 w-38 cursor-pointer rounded-lg bg-white text-center text-sm font-medium tracking-[-0.06em] shadow-md duration-700 hover:bg-white/30"
+							className="block h-14 w-38 cursor-pointer rounded-lg bg-white text-center text-sm font-medium tracking-[-0.06em] shadow-md transition-colors duration-700 hover:bg-white/30"
 						>
 							View Resume
 						</button>

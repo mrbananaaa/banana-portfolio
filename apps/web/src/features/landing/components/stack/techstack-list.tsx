@@ -61,3 +61,32 @@ export const TechStackList = () => {
 		</>
 	);
 };
+
+export const IconList = () => {
+	return (
+		<>
+			{technologies.map(({ name, color, strokeColor, Icon }) => {
+				return (
+					<div
+						key={name}
+						style={{
+							borderStyle: "solid",
+							borderWidth: "0.1px",
+							borderColor: `color-mix(in oklab, ${strokeColor ? strokeColor : ""} 30%, transparent)`,
+						}}
+						className="carousel-item h-fit cursor-pointer rounded-lg bg-muted p-1.5 shadow-md shadow-foreground/15"
+					>
+						<Icon
+							color={color}
+							style={{
+								strokeWidth: "0.3px",
+								stroke: `${strokeColor ? strokeColor : ""}`,
+							}}
+							className="size-8"
+						/>
+					</div>
+				);
+			})}
+		</>
+	);
+};

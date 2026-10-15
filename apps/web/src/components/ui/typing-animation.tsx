@@ -2,9 +2,9 @@ import {
 	type DOMMotionComponents,
 	type HTMLMotionProps,
 	type MotionProps,
-	motion,
 	useInView,
 } from "motion/react";
+import * as m from "motion/react-m";
 import {
 	type ComponentType,
 	type ReactElement,
@@ -22,18 +22,18 @@ import {
 import { cn } from "@/lib/utils";
 
 const motionElements = {
-	article: motion.article,
-	div: motion.div,
-	h1: motion.h1,
-	h2: motion.h2,
-	h3: motion.h3,
-	h4: motion.h4,
-	h5: motion.h5,
-	h6: motion.h6,
-	li: motion.li,
-	p: motion.p,
-	section: motion.section,
-	span: motion.span,
+	article: m.article,
+	div: m.div,
+	h1: m.h1,
+	h2: m.h2,
+	h3: m.h3,
+	h4: m.h4,
+	h5: m.h5,
+	h6: m.h6,
+	li: m.li,
+	p: m.p,
+	section: m.section,
+	span: m.span,
 } as const;
 
 type MotionElementType = Extract<
@@ -107,6 +107,7 @@ function getTextContent(node: ReactNode): string {
 function renderTypingNode(
 	node: ReactNode,
 	charactersLeft: { value: number },
+	pathPrefix = "typing-node",
 ): ReactNode {
 	if (node === null || node === undefined || typeof node === "boolean") {
 		return node;
@@ -130,12 +131,17 @@ function renderTypingNode(
 	 * Array of React nodes
 	 */
 	if (Array.isArray(node)) {
-		return node.map((child, index) => {
-			const renderedChild = renderTypingNode(child, charactersLeft);
+		let sequenceCounter = 0;
+
+		return node.map((child) => {
+			const currentID = `${pathPrefix}-${sequenceCounter}`;
+			sequenceCounter++;
+
+			const renderedChild = renderTypingNode(child, charactersLeft, currentID);
 
 			if (isValidElement(renderedChild)) {
 				return cloneElement(renderedChild, {
-					key: renderedChild.key ?? index,
+					key: renderedChild.key ?? currentID,
 				});
 			}
 
@@ -151,9 +157,12 @@ function renderTypingNode(
 			children?: ReactNode;
 		}>;
 
+		const currentKey = element.key !== null ? String(element.key) : pathPrefix;
+
 		const renderedChildren = renderTypingNode(
 			element.props.children,
 			charactersLeft,
+			`${currentKey}-c`,
 		);
 
 		return cloneElement(element, {
@@ -261,7 +270,7 @@ export function TypingAnimation({
 								graphemes.slice(0, currentCharIndex + 1).join(""),
 							);
 
-							setCurrentCharIndex(currentCharIndex + 1);
+							setCurrentCharIndex((prev) => prev + 1);
 						} else {
 							if (hasMultipleWords || loop) {
 								const isLastWord =
@@ -284,7 +293,7 @@ export function TypingAnimation({
 								graphemes.slice(0, currentCharIndex - 1).join(""),
 							);
 
-							setCurrentCharIndex(currentCharIndex - 1);
+							setCurrentCharIndex((prev) => prev - 1);
 						} else {
 							const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length;
 

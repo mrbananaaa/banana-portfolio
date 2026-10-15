@@ -2,12 +2,15 @@ import {
 	SiAlacritty,
 	SiBun,
 	SiCloudflare,
+	SiCmake,
 	SiDocker,
 	SiFigma,
 	SiFirebase,
 	SiGo,
 	SiGooglecloud,
 	SiGsap,
+	SiHyprland,
+	SiJavascript,
 	SiMongodb,
 	SiNeovim,
 	SiNextdotjs,
@@ -26,6 +29,7 @@ import {
 	SiTailwindcss,
 	SiTanstack,
 	SiTmux,
+	SiTrpc,
 	SiTurborepo,
 	SiTypescript,
 	SiVercel,
@@ -36,6 +40,12 @@ import {
 import { type TechIcon } from "./types";
 
 export const technologies: TechIcon[] = [
+	{
+		name: "js",
+		color: "default",
+		Icon: SiJavascript,
+		categories: ["language", "frontend", "backend"],
+	},
 	{
 		name: "ts",
 		color: "default",
@@ -97,7 +107,13 @@ export const technologies: TechIcon[] = [
 		name: "nextjs",
 		color: "default",
 		Icon: SiNextdotjs,
-		categories: ["infrastructure"],
+		categories: ["frontend", "backend"],
+	},
+	{
+		name: "trcp",
+		color: "default",
+		Icon: SiTrpc,
+		categories: ["backend"],
 	},
 	{
 		name: "payloadcms",
@@ -172,6 +188,12 @@ export const technologies: TechIcon[] = [
 	},
 	{ name: "nixos", color: "default", Icon: SiNixos, categories: ["tooling"] },
 	{
+		name: "hyprland",
+		color: "default",
+		Icon: SiHyprland,
+		categories: ["tooling"],
+	},
+	{
 		name: "alacritty",
 		color: "default",
 		Icon: SiAlacritty,
@@ -183,36 +205,13 @@ export const technologies: TechIcon[] = [
 		name: "turbo",
 		color: "default",
 		Icon: SiTurborepo,
+		categories: ["frontend", "backend"],
+	},
+	{
+		name: "cmake",
+		color: "default",
+		Icon: SiCmake,
 		categories: ["tooling"],
 	},
 	{ name: "figma", color: "default", Icon: SiFigma, categories: ["tooling"] },
 ];
-
-export const IconList = () => {
-	return (
-		<>
-			{technologies.map(({ name, color, strokeColor, Icon }) => {
-				return (
-					<div
-						key={name}
-						style={{
-							borderStyle: "solid",
-							borderWidth: "0.1px",
-							borderColor: `color-mix(in oklab, ${strokeColor ? strokeColor : ""} 30%, transparent)`,
-						}}
-						className="carousel-item h-fit cursor-pointer rounded-lg bg-muted p-1.5 shadow-md shadow-foreground/15"
-					>
-						<Icon
-							color={color}
-							style={{
-								strokeWidth: "0.3px",
-								stroke: `${strokeColor ? strokeColor : ""}`,
-							}}
-							className="size-8"
-						/>
-					</div>
-				);
-			})}
-		</>
-	);
-};

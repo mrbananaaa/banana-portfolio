@@ -5,8 +5,7 @@ import { useRef } from "react";
 import { Carousel } from "@/components/ui/carousel";
 import { SectionHeading } from "@/components/ui/typography";
 
-import { IconList } from "./technologies";
-import { TechStackList } from "./techstack-list";
+import { IconList, TechStackList } from "./techstack-list";
 
 export const TechStackSection = () => {
 	const containerRef = useRef(null);

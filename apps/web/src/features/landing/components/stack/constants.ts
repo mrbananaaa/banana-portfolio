@@ -2,7 +2,7 @@ import { type TechStack } from "./types";
 
 export const TECH_STACK: TechStack[] = [
 	{
-		title: "Language",
+		title: "Language and Runtime",
 		subtitle:
 			"Programming language that I'm build with, starting from most used to just familiar with.",
 		category: "language",

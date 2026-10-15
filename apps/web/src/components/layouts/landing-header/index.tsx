@@ -1,11 +1,14 @@
-import { useGSAP } from "@gsap/react";
-import { useNavigate } from "@tanstack/react-router";
-import gsap from "gsap";
+import { ClientOnly, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 
 import { GridCell } from "@/components/ui/grid/grid-cell";
 import { GridContainer } from "@/components/ui/grid/grid-container";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { useScrollTo } from "@/hooks/use-scroll-to";
+
+import { MoboNav } from "./mobo-nav";
+import { NavList } from "./nav-list";
+import { DesktopLogo, MoboLogo } from "./nav-logo";
 
 interface SiteHeaderProps extends React.ComponentProps<"nav"> {}
 
@@ -42,9 +45,10 @@ const removeHashPrefix = (target: string) => {
 
 const LandingHeader = ({ ...props }: SiteHeaderProps) => {
 	const [activeNav, setActiveNav] = useState("");
-	const { scrollTo } = useScrollTo();
 	const navigate = useNavigate();
-	const containerRef = useRef(null);
+	const { scrollTo } = useScrollTo();
+	const isDesktop = useMediaQuery("(min-width: 768px)");
+	const navContainerRef = useRef(null);
 
 	const navigateTo = async (
 		e: React.MouseEvent<HTMLAnchorElement>,
@@ -64,12 +68,14 @@ const LandingHeader = ({ ...props }: SiteHeaderProps) => {
 
 	useEffect(() => {
 		const observerCallback: IntersectionObserverCallback = (entries) => {
-			entries.forEach(async (entry) => {
+			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					const sectionID = entry.target.id === "hero" ? "" : entry.target.id;
+
+					// TODO: change to slide animation
 					setActiveNav(`#${sectionID}`);
 
-					await navigate({
+					navigate({
 						hash: sectionID,
 						hashScrollIntoView: false,
 						replace: true,
@@ -93,66 +99,41 @@ const LandingHeader = ({ ...props }: SiteHeaderProps) => {
 		return () => observer.disconnect();
 	}, [navigate]);
 
-	useGSAP(
-		() => {
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: containerRef.current,
-					start: "top+=80 top",
-					end: "top+=180 top",
-					scrub: true,
-				},
-			});
-
-			tl.from(".sliding-bg", {
-				backgroundPosition: "100% 0%",
-				duration: 1,
-				color: "var(--b-foreground)",
-				ease: "power1.out",
-			}).from(
-				".sliding-bg-primary",
-				{
-					backgroundPosition: "100% 0%",
-					duration: 1,
-					color: "var(--b-primary)",
-					ease: "power1.out",
-				},
-				0,
-			);
-		},
-		{ scope: containerRef },
-	);
-
 	return (
 		<nav {...props}>
 			<GridContainer>
 				<GridCell className="px-0 py-7">
-					<nav
-						ref={containerRef}
-						className="flex items-center justify-center md:justify-between"
-					>
+					<nav className="flex items-center justify-between">
 						<a href="/" onClick={(e) => navigateTo(e, "#")} className="block">
-							<div className="flex flex-col items-start gap-y-0 text-left font-display text-xl leading-[80%] font-semibold tracking-[-0.06em] select-none md:text-2xl md:leading-[85%]">
-								<h1 className="sliding-bg text-primary">mr.</h1>
-								<h1 className="sliding-bg-primary text-foreground">bananaaa</h1>
-							</div>
+							<ClientOnly>
+								{isDesktop ? <DesktopLogo /> : <MoboLogo />}
+							</ClientOnly>
 						</a>
 
-						<ul className="hidden cursor-default gap-6 font-display text-base font-light tracking-tight text-muted-foreground md:flex">
-							{NAV_LIST.map(({ label, url }) => (
-								<li key={`${label}-${url}`}>
-									<a
-										href={`${url}`}
-										onClick={(e) => navigateTo(e, url)}
-										className={
-											url === activeNav ? "bg-primary text-foreground" : ""
-										}
-									>
-										{label}
-									</a>
-								</li>
-							))}
-						</ul>
+						<ClientOnly>
+							{isDesktop ? (
+								<ul
+									ref={navContainerRef}
+									className="hidden cursor-default gap-6 font-display text-base font-light tracking-tight text-muted-foreground md:flex"
+								>
+									<NavList
+										navItems={NAV_LIST}
+										activeNav={activeNav}
+										onClick={(e, url) => navigateTo(e, url)}
+									/>
+								</ul>
+							) : (
+								<MoboNav
+									nav={
+										<NavList
+											navItems={NAV_LIST}
+											activeNav={activeNav}
+											onClick={(e, url) => navigateTo(e, url)}
+										/>
+									}
+								/>
+							)}
+						</ClientOnly>
 					</nav>
 				</GridCell>
 			</GridContainer>

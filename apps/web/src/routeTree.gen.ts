@@ -10,53 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AnimationIndexRouteImport } from './routes/animation/index'
-import { Route as AvatarIndexRouteImport } from './routes/avatar/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AnimationIndexRoute = AnimationIndexRouteImport.update({
-  id: '/animation/',
-  path: '/animation/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AvatarIndexRoute = AvatarIndexRouteImport.update({
-  id: '/avatar/',
-  path: '/avatar/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/animation/': typeof AnimationIndexRoute
-  '/avatar/': typeof AvatarIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/animation': typeof AnimationIndexRoute
-  '/avatar': typeof AvatarIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/animation/': typeof AnimationIndexRoute
-  '/avatar/': typeof AvatarIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/animation/' | '/avatar/'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/animation' | '/avatar'
-  id: '__root__' | '/' | '/animation/' | '/avatar/'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AnimationIndexRoute: typeof AnimationIndexRoute
-  AvatarIndexRoute: typeof AvatarIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,27 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/animation/': {
-      id: '/animation/'
-      path: '/animation'
-      fullPath: '/animation/'
-      preLoaderRoute: typeof AnimationIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/avatar/': {
-      id: '/avatar/'
-      path: '/avatar'
-      fullPath: '/avatar/'
-      preLoaderRoute: typeof AvatarIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AnimationIndexRoute: AnimationIndexRoute,
-  AvatarIndexRoute: AvatarIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
