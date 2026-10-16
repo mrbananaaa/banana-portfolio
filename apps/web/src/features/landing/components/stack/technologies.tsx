@@ -4,6 +4,7 @@ import {
 	SiCloudflare,
 	SiCmake,
 	SiDocker,
+	SiDrizzle,
 	SiFigma,
 	SiFirebase,
 	SiGo,
@@ -137,6 +138,12 @@ export const technologies: TechIcon[] = [
 	{ name: "pg", color: "default", Icon: SiPostgresql, categories: ["backend"] },
 	{ name: "mongo", color: "default", Icon: SiMongodb, categories: ["backend"] },
 	{ name: "redis", color: "default", Icon: SiRedis, categories: ["backend"] },
+	{
+		name: "drizzle",
+		color: "default",
+		Icon: SiDrizzle,
+		categories: ["backend"],
+	},
 	{
 		name: "socketio",
 		color: "default",
