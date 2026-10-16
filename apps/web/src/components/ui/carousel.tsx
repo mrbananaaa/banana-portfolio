@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import { type EmblaOptionsType } from "embla-carousel";
 import AutoScroll, {
 	type AutoScrollOptionsType,
@@ -21,6 +22,7 @@ export const Carousel = ({
 	options,
 	autoScrollOption,
 	ref,
+	className,
 	...props
 }: CarouselProps) => {
 	const emblaOpt = options ? options : null;
@@ -57,7 +59,11 @@ export const Carousel = ({
 			ref={ref}
 			{...props}
 		>
-			<div ref={emblaRef} className="h-full w-full overflow-x-hidden" dir="ltr">
+			<div
+				ref={emblaRef}
+				className={cn("h-full w-full overflow-x-hidden", className)}
+				dir="ltr"
+			>
 				{/* INFO: Container */}
 				<div className="embla__container wheel-gesture-container flex h-full w-full">
 					{children}
