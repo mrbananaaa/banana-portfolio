@@ -1,3 +1,4 @@
+import { ClientOnly } from "@/components/ui/client-only";
 import { GridCell } from "@/components/ui/grid/grid-cell";
 import { GridContainer } from "@/components/ui/grid/grid-container";
 import { CONTACT_LIST } from "@/config/constants";
@@ -5,8 +6,10 @@ import { CONTACT_LIST } from "@/config/constants";
 import { CopyrightSection } from "./copyright-section";
 
 const FooterSection = () => {
+	const contactList = [...CONTACT_LIST];
+
 	return (
-		<GridContainer space="lg" className="px-10 py-14 lg:px-0" id="footer">
+		<GridContainer space="lg" className="px-10 py-14 lg:px-0">
 			<GridCell id="contact">
 				<div className="flex gap-x-8">
 					<div className="flex flex-col gap-y-8">
@@ -15,7 +18,7 @@ const FooterSection = () => {
 						</h3>
 
 						<ul className="flex flex-col gap-y-1 text-lg transition-colors duration-300">
-							{[...CONTACT_LIST].map(([title, url]) => (
+							{contactList.map(([title, url]) => (
 								<li
 									key={url}
 									className="selection:bg-primary selection:text-foreground hover:text-primary"
@@ -33,7 +36,9 @@ const FooterSection = () => {
 			</GridCell>
 
 			<GridCell className="grid grid-cols-1 items-center gap-y-4 text-sm font-light tracking-tighter text-muted-foreground selection:bg-primary selection:text-foreground md:grid-cols-3 md:gap-y-0">
-				<CopyrightSection />
+				<ClientOnly>
+					<CopyrightSection />
+				</ClientOnly>
 			</GridCell>
 		</GridContainer>
 	);

@@ -37,7 +37,7 @@ export const ShowcaseCard = ({
 			const iframeElement = iframeRef.current;
 			const cardTitleElement = cardTitleRef.current;
 
-			if (!iframeElement && !cardTitleElement) return;
+			if (!iframeElement || !cardTitleElement) return;
 
 			// iframe scale animation
 
@@ -110,7 +110,7 @@ export const ShowcaseCard = ({
 			)}
 			ref={containerRef}
 		>
-			<div className="relative h-36 w-60 overflow-hidden rounded-md bg-primary">
+			<div className="relative h-36 w-60 overflow-hidden rounded-md">
 				<div className="absolute inset-0 z-10" />
 
 				<WebsiteThumbnail

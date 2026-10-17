@@ -46,7 +46,12 @@ function Home() {
 					<ShowcaseSection />
 				</GridCell>
 
-				<GridCell id="contact" className="h-[80svh]" data-nav-section>
+				<GridCell
+					offset="both"
+					id="contact"
+					className="h-[80svh]"
+					data-nav-section
+				>
 					<ContactSection />
 				</GridCell>
 			</GridContainer>

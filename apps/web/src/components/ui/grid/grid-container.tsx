@@ -32,7 +32,7 @@ export const GridContainer = ({
 	return (
 		<div
 			{...props}
-			className={cn("mx-auto h-full w-full max-w-mgw px-4 md:px-8")}
+			className="mx-auto h-full w-full max-w-mgw px-4 md:px-8"
 			ref={ref}
 		>
 			<div

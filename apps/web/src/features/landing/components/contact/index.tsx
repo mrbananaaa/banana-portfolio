@@ -1,27 +1,16 @@
-import { useNavigate } from "@tanstack/react-router";
-import { Fragment } from "react/jsx-runtime";
+import { ClientOnly } from "@tanstack/react-router";
 
+import { HyperText } from "@/components/ui/hyper-text";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { RippleButton } from "@/components/ui/ripple-button";
 import { SectionHeading } from "@/components/ui/typography";
 import { CONTACT_LIST } from "@/config/constants";
-import { useScrollTo } from "@/hooks/use-scroll-to";
+import { useMediaQuery } from "@/hooks/use-media-query";
+
+import { ContactList } from "./contact-list";
 
 export const ContactSection = () => {
-	const { scrollTo } = useScrollTo();
-	const navigate = useNavigate();
-	const contactList = [...CONTACT_LIST].slice(0, 3);
-
-	const navigateToFooter = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-		e.preventDefault();
-
-		scrollTo("#footer");
-
-		await navigate({
-			hash: "footer",
-			hashScrollIntoView: false,
-			replace: true,
-			resetScroll: false,
-		});
-	};
+	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	return (
 		<div className="flex h-full w-full items-center justify-center">
@@ -32,46 +21,33 @@ export const ContactSection = () => {
 				/>
 
 				<div className="flex flex-col items-center gap-y-6">
-					<div className="flex items-center justify-center gap-x-2">
+					<div className="flex items-center justify-center gap-x-2 font-display tracking-[-0.06em]">
 						<a href={CONTACT_LIST.get("Email")} target="_blank" rel="noopener">
-							<button
-								type="button"
-								className="block h-14 w-38 cursor-pointer rounded-lg bg-primary text-center text-sm font-medium tracking-[-0.06em] text-white shadow-md transition-colors duration-700 hover:bg-[#ffc000]"
+							<RippleButton
+								rippleColor="var(--b-primary)"
+								className="h-14 w-38 border-[0.1px] border-foreground/20 bg-muted text-foreground shadow-sm transition-colors duration-400 hover:bg-muted/50"
 							>
-								Email Me
-							</button>
+								<HyperText className="px-4 text-base font-semibold">
+									Mail Me
+								</HyperText>
+							</RippleButton>
 						</a>
 
-						<button
-							type="button"
-							className="block h-14 w-38 cursor-pointer rounded-lg bg-white text-center text-sm font-medium tracking-[-0.06em] shadow-md transition-colors duration-700 hover:bg-white/30"
-						>
-							View Resume
-						</button>
-					</div>
-
-					<div className="flex flex-col items-center gap-y-2">
-						<div className="flex items-center justify-center gap-x-3 text-xs text-muted-foreground">
-							{contactList.map(([title, url], i) => (
-								<Fragment key={url}>
-									<a href={url} target="_blank" rel="noopener">
-										{title}
-									</a>
-
-									{contactList.length - 1 !== i && <p>&bull;</p>}
-								</Fragment>
-							))}
-						</div>
-
-						{/* biome-ignore lint/a11y/useValidAnchor: I wanna use anchor for this one */}
-						<a href="#footer" onClick={(e) => navigateToFooter(e)}>
-							<div className="flex animate-pulse cursor-pointer flex-col items-center -space-y-1.5 text-xs">
-								<div>more</div>
-								<div>&#9662;</div>
-							</div>
+						<a href="/resume.pdf" target="_blank" rel="noopener">
+							<InteractiveHoverButton className="h-14 w-38 rounded-lg border-[0.1px] border-foreground/20 text-sm font-semibold shadow-sm">
+								View Resume
+							</InteractiveHoverButton>
 						</a>
 					</div>
 				</div>
+
+				<ClientOnly>
+					{isDesktop && (
+						<div className="mt-30 hidden w-full max-w-3xl items-center justify-between font-display font-bold tracking-[-0.06em] text-muted-foreground md:flex">
+							<ContactList />
+						</div>
+					)}
+				</ClientOnly>
 			</div>
 		</div>
 	);

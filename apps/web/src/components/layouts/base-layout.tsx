@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
+import { useScrolled } from "@/hooks/use-scrolled";
 import { cn } from "@/lib/utils";
 
 import { LandingAnimation } from "../ui/landing-animation";
@@ -11,43 +12,46 @@ interface BaseLayoutProps extends React.ComponentProps<"div"> {
 	children: React.ReactNode;
 }
 
+const IS_DEV = import.meta.env.DEV;
+
+const StickyHeader = () => {
+	const isScrolled = useScrolled(80);
+
+	return (
+		<header
+			className={cn(
+				"fixed top-0 z-60 w-full transition-[box-shadow,backdrop-filter] duration-300",
+				isScrolled
+					? "bg-background/70 backdrop-blur-lg shadow-sm"
+					: "bg-transparent backdrop-blur-none",
+			)}
+		>
+			<LandingHeader />
+		</header>
+	);
+};
+
 const BaseLayout = ({ children, className, ...props }: BaseLayoutProps) => {
-	const [isScrolled, setIsScrolled] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 80);
-		};
-
-		window.addEventListener("scroll", handleScroll, { passive: true });
-
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+	const handleAnimationFinish = useCallback(() => setIsLoading(false), []);
 
 	return (
 		<>
-			{isLoading && <LandingAnimation onFinish={() => setIsLoading(false)} />}
+			{isLoading && <LandingAnimation onFinish={handleAnimationFinish} />}
 
 			<div
 				{...props}
 				className={cn(
-					`${process.env.NODE_ENV !== "production" ? "debug-screens" : ""} relative flex min-h-screen w-full z-10 flex-col`,
+					`${IS_DEV ? "debug-screens" : ""} relative flex min-h-dvh w-full z-10 flex-col`,
 					className,
 				)}
 			>
-				<header
-					className={`${isScrolled ? "shadow-sm/5" : ""} fixed top-0 z-60 w-full backdrop-blur-lg transition-all duration-1000`}
-				>
-					<LandingHeader />
-				</header>
+				<StickyHeader />
 
 				<ScrollProvider>
 					<div id="smooth-wrapper">
 						<div id="smooth-content">
-							<main className="relative flex-1 py-28">
-								<div>{children}</div>
-							</main>
+							<main className="relative flex-1 py-28">{children}</main>
 
 							<footer className="w-full bg-foreground text-background">
 								<FooterSection />

@@ -230,17 +230,23 @@ export function TypingAnimation({
 	/**
 	 * Reset the animation when the actual content changes.
 	 */
-	const _animationSourceKey = useMemo(
+	const animationSourceKey = useMemo(
 		() => (words ? words.map(getTextContent).join("\u0000") : (children ?? "")),
 		[words, children],
 	);
 
-	useEffect(() => {
+	const [prevKey, setPrevKey] = useState(animationSourceKey);
+
+	if (prevKey !== animationSourceKey) {
+		// render-phase reset: React discards this render and re-renders immediately,
+		// no extra commit, no effect warning
+		setPrevKey(animationSourceKey);
 		setDisplayedText("");
+
 		setCurrentWordIndex(0);
 		setCurrentCharIndex(0);
 		setPhase("typing");
-	}, []);
+	}
 
 	/**
 	 * Main typing animation loop.
