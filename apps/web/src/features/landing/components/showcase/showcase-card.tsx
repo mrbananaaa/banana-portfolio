@@ -133,7 +133,9 @@ export const ShowcaseCard = ({
 					{title}
 				</h3>
 
-				<p className="line-clamp-3 text-sm text-muted-foreground">{desc}</p>
+				<p className="line-clamp-3 text-sm text-muted-foreground selection:bg-primary">
+					{desc}
+				</p>
 			</div>
 		</button>
 	);

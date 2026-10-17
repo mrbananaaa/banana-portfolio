@@ -34,7 +34,7 @@ export const ContactList = () => {
 			const onMouseEnterHandler = (i: number) => () => {
 				gsap.to(divElement[i], {
 					backgroundPosition: "0% 0%",
-					color: "var(--b-foreground)",
+					color: "var(--b-primary)",
 					duration: 0.4,
 					ease: "power3.inOut",
 				});
@@ -80,10 +80,10 @@ export const ContactList = () => {
 				>
 					<div
 						ref={setDivRef(i)}
-						className="group group flex items-center gap-x-4 bg-[linear-gradient(to_right,var(--b-primary)_50%,transparent_50%)] bg-size-[200%_100%] bg-position-[100%_0%]"
+						className="group group flex items-center gap-x-4 bg-[linear-gradient(to_right,var(--b-foreground)_50%,transparent_50%)] bg-size-[200%_100%] bg-position-[100%_0%] px-2 py-0.5"
 					>
 						<p>{title}</p>
-						<MoveUpRight className="size-4 transition-colors duration-400 group-hover:text-foreground" />
+						<MoveUpRight className="size-4 transition-colors duration-400 group-hover:text-primary" />
 					</div>
 				</a>
 			))}

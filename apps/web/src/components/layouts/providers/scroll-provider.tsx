@@ -20,10 +20,14 @@ export const ScrollProvider = ({ children }: ScrollProviderProps) => {
 			smoother.current = ScrollSmoother.create({
 				wrapper: "#smooth-wrapper",
 				content: "#smooth-content",
-				smooth: 1.5,
-				smoothTouch: 0.2,
+				smooth: 1.2,
 				effects: true,
 			});
+
+			return () => {
+				smoother.current?.kill();
+				smoother.current = null;
+			};
 		},
 		{ scope: containerRef },
 	);

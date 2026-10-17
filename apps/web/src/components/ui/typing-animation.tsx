@@ -194,10 +194,10 @@ export function TypingAnimation({
 		Component
 	] as TypingAnimationMotionComponent;
 
-	const [displayedText, setDisplayedText] = useState("");
 	const [currentWordIndex, setCurrentWordIndex] = useState(0);
 	const [currentCharIndex, setCurrentCharIndex] = useState(0);
 	const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing");
+	const [hasStarted, setHasStarted] = useState(false);
 
 	const elementRef = useRef<HTMLElement | null>(null);
 
@@ -212,12 +212,18 @@ export function TypingAnimation({
 	 * The animation itself still needs a string to know
 	 * which character should be displayed next.
 	 */
-	const wordsToAnimate = useMemo(
+	const wordsKey = useMemo(
 		() =>
-			words?.map((word) =>
-				typeof word === "string" ? word : getTextContent(word),
-			) ?? (children ? [children] : []),
+			words
+				? words
+						.map((w) => (typeof w === "string" ? w : getTextContent(w)))
+						.join("\u0000")
+				: (children ?? ""),
 		[words, children],
+	);
+	const wordsToAnimate = useMemo(
+		() => (wordsKey === "" && !children ? [] : wordsKey.split("\u0000")),
+		[wordsKey, children],
 	);
 
 	const hasMultipleWords = wordsToAnimate.length > 1;
@@ -230,10 +236,7 @@ export function TypingAnimation({
 	/**
 	 * Reset the animation when the actual content changes.
 	 */
-	const animationSourceKey = useMemo(
-		() => (words ? words.map(getTextContent).join("\u0000") : (children ?? "")),
-		[words, children],
-	);
+	const animationSourceKey = wordsKey;
 
 	const [prevKey, setPrevKey] = useState(animationSourceKey);
 
@@ -241,11 +244,10 @@ export function TypingAnimation({
 		// render-phase reset: React discards this render and re-renders immediately,
 		// no extra commit, no effect warning
 		setPrevKey(animationSourceKey);
-		setDisplayedText("");
-
 		setCurrentWordIndex(0);
 		setCurrentCharIndex(0);
 		setPhase("typing");
+		setHasStarted(false);
 	}
 
 	/**
@@ -256,7 +258,7 @@ export function TypingAnimation({
 
 		if (shouldStart && wordsToAnimate.length > 0) {
 			const timeoutDelay =
-				delay > 0 && displayedText === ""
+				!hasStarted && delay > 0
 					? delay
 					: phase === "typing"
 						? typingSpeed
@@ -265,27 +267,16 @@ export function TypingAnimation({
 							: pauseDelay;
 
 			timeout = setTimeout(() => {
-				const currentWord = wordsToAnimate[currentWordIndex] || "";
-
-				const graphemes = Array.from(currentWord);
+				setHasStarted(true);
+				const graphemes = Array.from(wordsToAnimate[currentWordIndex] ?? "");
 
 				switch (phase) {
 					case "typing":
 						if (currentCharIndex < graphemes.length) {
-							setDisplayedText(
-								graphemes.slice(0, currentCharIndex + 1).join(""),
-							);
-
 							setCurrentCharIndex((prev) => prev + 1);
-						} else {
-							if (hasMultipleWords || loop) {
-								const isLastWord =
-									currentWordIndex === wordsToAnimate.length - 1;
-
-								if (!isLastWord || loop) {
-									setPhase("pause");
-								}
-							}
+						} else if (hasMultipleWords || loop) {
+							const isLastWord = currentWordIndex === wordsToAnimate.length - 1;
+							if (!isLastWord || loop) setPhase("pause");
 						}
 						break;
 
@@ -295,15 +286,9 @@ export function TypingAnimation({
 
 					case "deleting":
 						if (currentCharIndex > 0) {
-							setDisplayedText(
-								graphemes.slice(0, currentCharIndex - 1).join(""),
-							);
-
 							setCurrentCharIndex((prev) => prev - 1);
 						} else {
-							const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length;
-
-							setCurrentWordIndex(nextIndex);
+							setCurrentWordIndex((prev) => (prev + 1) % wordsToAnimate.length);
 							setPhase("typing");
 						}
 						break;
@@ -321,7 +306,6 @@ export function TypingAnimation({
 		phase,
 		currentCharIndex,
 		currentWordIndex,
-		displayedText,
 		wordsToAnimate,
 		hasMultipleWords,
 		loop,
@@ -329,6 +313,7 @@ export function TypingAnimation({
 		deletingSpeed,
 		pauseDelay,
 		delay,
+		hasStarted,
 	]);
 
 	const currentWord = words?.[currentWordIndex];
@@ -336,6 +321,10 @@ export function TypingAnimation({
 	const currentWordGraphemes = Array.from(
 		wordsToAnimate[currentWordIndex] || "",
 	);
+
+	const displayedText = currentWordGraphemes
+		.slice(0, currentCharIndex)
+		.join("");
 
 	const isComplete =
 		!loop &&

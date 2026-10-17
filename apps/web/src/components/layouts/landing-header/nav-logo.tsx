@@ -40,7 +40,11 @@ export const DesktopLogo = () => {
 	return (
 		<div
 			ref={logoContainerRef}
-			className="flex flex-col items-start gap-y-0 text-left font-display text-xl leading-[80%] font-semibold tracking-[-0.06em] select-none md:text-2xl md:leading-[85%]"
+			className="flex flex-col items-start gap-y-0 text-left font-display text-xl leading-[80%] font-black tracking-[-0.06em] select-none md:text-2xl md:leading-[85%]"
+			style={{
+				WebkitTextStroke: "1px",
+				WebkitTextStrokeColor: "rgba(from var(--b-foreground) r g b / 0.1)",
+			}}
 		>
 			<h1 className="sliding-bg text-primary">mr.</h1>
 			<h1 className="sliding-bg-primary text-foreground">bananaaa</h1>

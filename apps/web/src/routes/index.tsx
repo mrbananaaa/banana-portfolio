@@ -15,7 +15,7 @@ function Home() {
 	return (
 		<BaseLayout>
 			<GridContainer space="lg" className="flex min-h-300 flex-col">
-				<GridCell id="hero" className="h-[80svh] max-h-none" data-nav-section>
+				<GridCell offset="both" id="hero" className="p-0.5" data-nav-section>
 					<HeroSection />
 				</GridCell>
 

@@ -2,6 +2,7 @@ import { ClientOnly } from "@tanstack/react-router";
 
 import { HyperText } from "@/components/ui/hyper-text";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { NoiseTexture } from "@/components/ui/noise-texture";
 import { RippleButton } from "@/components/ui/ripple-button";
 import { SectionHeading } from "@/components/ui/typography";
 import { CONTACT_LIST } from "@/config/constants";
@@ -13,7 +14,14 @@ export const ContactSection = () => {
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	return (
-		<div className="flex h-full w-full items-center justify-center">
+		<div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl px-4 md:bg-primary md:px-0">
+			<NoiseTexture
+				octaves={4}
+				frequency={0.75}
+				slope={0.15}
+				noiseOpacity={0.6}
+			/>
+
 			<div className="flex w-full flex-col items-center">
 				<SectionHeading
 					title="Let's Build Something Together."

@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { AppProvider } from "@/components/layouts/providers";
 
+import "@fontsource-variable/anybody";
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/inter";
 
